@@ -71,23 +71,40 @@ const phrases = [
   "Under Construction. Still."
 ];
 
+let deepWebMode = false;
+
+document.getElementById("toggle-mode").addEventListener("click", () => {
+  deepWebMode = !deepWebMode;
+  document.body.classList.toggle("deep", deepWebMode);
+});
+
 function getRandomUnusedArtifact() {
   if (unusedArtifacts.length === 0) {
     unusedArtifacts = [...allArtifacts];
   }
   const index = Math.floor(Math.random() * unusedArtifacts.length);
   const [artifact] = unusedArtifacts.splice(index, 1);
+
+  if (deepWebMode) {
+    // Add visual corruption in Deep Web mode
+    artifact.title = glitchText(artifact.title);
+    artifact.caption = glitchText(artifact.caption);
+  }
   return artifact;
+}
+
+function glitchText(text) {
+  return text.replace(/[aeiou]/gi, (c) => `&#${c.charCodeAt(0) + 5000};`);
 }
 
 function renderArtifact() {
   const artifact = getRandomUnusedArtifact();
   const container = document.getElementById("artifact-container");
   const el = document.createElement("div");
-  el.className = "artifact";
+  el.className = "artifact fade-in";
   el.innerHTML = `
     <h2>${artifact.title}</h2>
-    <img src="${artifact.image}" alt="${artifact.title}" />
+    <img src="${artifact.image}" alt="${artifact.title}" loading="lazy" />
     <p><small>${artifact.caption} ~${artifact.year}</small></p>
   `;
   container.appendChild(el);
