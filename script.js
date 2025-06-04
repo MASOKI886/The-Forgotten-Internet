@@ -86,6 +86,30 @@ function getRandomUnusedArtifact() {
   const index = Math.floor(Math.random() * unusedArtifacts.length);
   const [artifact] = unusedArtifacts.splice(index, 1);
 
+  // Easter egg logic
+  const r = Math.random();
+  if (r < 0.01) {
+    return {
+      title: "🧱 404 Room",
+      image: "images/goth_forum.webp",
+      caption: "A broken thread with no replies... just echoes.",
+      year: "??"
+    };
+  } else if (r < 0.015) {
+    return {
+      title: "🎶 Secret Myspace Page",
+      image: "images/webring_hub.webp",
+      caption: "Autoplay: Evanescence – Bring Me to Life",
+      year: "2004"
+    };
+  }
+
+  // Rare glitch artifact logic
+  if (Math.random() < 0.05) {
+    artifact.title = `⚠️ ${artifact.title}`;
+    artifact.caption = "▒▒▒ DATA CORRUPTION ▒▒▒";
+  }
+
   if (deepWebMode) {
     artifact.title = glitchText(artifact.title);
     artifact.caption = glitchText(artifact.caption);
