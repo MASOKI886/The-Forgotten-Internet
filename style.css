@@ -115,3 +115,51 @@ body.deep img {
   filter: grayscale(1) contrast(1.2);
 }
 
+/* --- Deep Web Mode Styles --- */
+body.deep {
+  background-color: #000;
+  color: #ccc;
+  background-image: url('images/static.gif');
+  background-repeat: repeat;
+  background-size: cover;
+  filter: brightness(0.85) contrast(1.05) sepia(0.1);
+  font-family: 'Courier New', monospace;
+}
+
+/* Optional scanline overlay */
+body.deep::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0.05) 1px,
+    rgba(0,0,0,0) 2px
+  );
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+/* Make hover effects glow/glitch */
+body.deep .artifact:hover {
+  box-shadow: 0 0 6px #ff00ff88, 0 0 10px #00ffff88;
+  transform: scale(1.01) rotateZ(0.2deg);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Button styling tweak */
+body.deep button {
+  background-color: #111;
+  color: #f0f0f0;
+  border-color: #888;
+  text-shadow: 0 0 4px #ff00ff;
+}
+
+body.deep h2 {
+  color: #ff66cc;
+  text-shadow: 0 0 5px #ff00ff;
+}
