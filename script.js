@@ -19,7 +19,7 @@ const allArtifacts = [
   },
   {
     title: "🌌 Lost MIDI Blog",
-    image: "images/vampire_shrine.webp",
+    image: "images/lost_MIDI.webp",
     caption: "Last updated 2000. Still plays music.",
     year: "2000"
   },
