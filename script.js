@@ -1,19 +1,19 @@
 const artifacts = [
   {
     title: "💾 Vampire Shrine of 1999",
-    image: "images/vampire_shrine.jpg",
+    image: "images/vampire_shrine.webp",
     caption: "Under Construction... Forever",
     year: "1999"
   },
   {
     title: "🖥️ Eternal Webring Hub",
-    image: "images/webring_hub.jpg",
+    image: "images/webring_hub.webp",
     caption: "Last linked in 2003",
     year: "2003"
   },
   {
     title: "🦇 Gothic Forum Archive",
-    image: "images/goth_forum.jpg",
+    image: "images/goth_forum.webp",
     caption: "Only 4 posts... ever",
     year: "2001"
   }
