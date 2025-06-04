@@ -72,10 +72,41 @@ button:hover {
   animation: fadeIn 1s ease;
 }
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+.slide-in-left {
+  animation: slideLeft 0.8s ease;
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right {
+  animation: slideRight 0.8s ease;
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.zoom-in {
+  animation: zoomIn 0.8s ease;
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.skew-in {
+  animation: skewIn 0.8s ease;
+}
+@keyframes skewIn {
+  from { opacity: 0; transform: skewX(10deg); }
+  to { opacity: 1; transform: skewX(0); }
+}
 body.deep {
   background: #000;
   color: #6affff;
