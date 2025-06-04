@@ -18,3 +18,146 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+<!-- style.css -->
+<style>
+body {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-image: url('grain.png'); /* Optional VHS noise */
+  background-size: cover;
+}
+
+#artifact-container {
+  max-width: 800px;
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+  justify-items: center;
+}
+
+.artifact {
+  background-color: #111;
+  border: 2px solid #444;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
+}
+
+.artifact:hover {
+  transform: scale(1.02);
+  border-color: #777;
+}
+
+.artifact img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.controls {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.25rem;
+  background-color: #222;
+  border: 1px solid #666;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+  border-color: #aaa;
+}
+
+#narration {
+  margin-top: 2rem;
+  font-style: italic;
+  opacity: 0.6;
+  text-align: center;
+}
+</style>
+
+<!-- script.js -->
+<script>
+const artifacts = [
+  {
+    title: "💾 Vampire Shrine of 1999",
+    image: "images/vampire_shrine.jpg",
+    caption: "Under Construction... Forever",
+    year: "1999"
+  },
+  {
+    title: "🖥️ Eternal Webring Hub",
+    image: "images/webring_hub.jpg",
+    caption: "Last linked in 2003",
+    year: "2003"
+  },
+  {
+    title: "🦇 Gothic Forum Archive",
+    image: "images/goth_forum.jpg",
+    caption: "Only 4 posts... ever",
+    year: "2001"
+  }
+];
+
+const phrases = [
+  "Webrings once connected us.",
+  "Nobody updated this since 2002.",
+  "She left one message… then never came back.",
+  "This button goes nowhere.",
+  "Under Construction. Still."
+];
+
+function getRandomArtifact() {
+  return artifacts[Math.floor(Math.random() * artifacts.length)];
+}
+
+function renderArtifact() {
+  const container = document.getElementById("artifact-container");
+  const artifact = getRandomArtifact();
+
+  const el = document.createElement("div");
+  el.className = "artifact";
+  el.innerHTML = `
+    <h2>${artifact.title}</h2>
+    <img src="${artifact.image}" alt="${artifact.title}" />
+    <p><small>${artifact.caption} ~${artifact.year}</small></p>
+  `;
+
+  container.appendChild(el);
+}
+
+function showNarration() {
+  const el = document.getElementById("narration");
+  el.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+}
+
+document.getElementById("explore").addEventListener("click", () => {
+  renderArtifact();
+});
+
+document.getElementById("copy-link").addEventListener("click", () => {
+  navigator.clipboard.writeText(window.location.href);
+  alert("Link copied to clipboard!");
+});
+
+// On load
+renderArtifact();
+showNarration();
+setInterval(showNarration, 10000);
+</script>
