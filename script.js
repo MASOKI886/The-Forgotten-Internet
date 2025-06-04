@@ -25,13 +25,13 @@ const allArtifacts = [
   },
   {
     title: "🧬 Fanfic Server Node",
-    image: "images/webring_hub.webp",
+    image: "images/Fanfic_Server_Node.webp",
     caption: "All links are broken, except one.",
     year: "2002"
   },
   {
     title: "💀 Angel of Death's Guestbook",
-    image: "images/goth_forum.webp",
+    image: "images/Death_Guestbook.webp",
     caption: "Signed by ghosts. Last entry: 1998.",
     year: "1998"
   },
