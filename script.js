@@ -72,6 +72,7 @@ const phrases = [
 ];
 
 let deepWebMode = false;
+const animations = ["fade-in", "slide-in-left", "slide-in-right", "zoom-in", "skew-in"];
 
 document.getElementById("toggle-mode").addEventListener("click", () => {
   deepWebMode = !deepWebMode;
@@ -86,7 +87,6 @@ function getRandomUnusedArtifact() {
   const [artifact] = unusedArtifacts.splice(index, 1);
 
   if (deepWebMode) {
-    // Add visual corruption in Deep Web mode
     artifact.title = glitchText(artifact.title);
     artifact.caption = glitchText(artifact.caption);
   }
@@ -101,7 +101,8 @@ function renderArtifact() {
   const artifact = getRandomUnusedArtifact();
   const container = document.getElementById("artifact-container");
   const el = document.createElement("div");
-  el.className = "artifact fade-in";
+  const animClass = animations[Math.floor(Math.random() * animations.length)];
+  el.className = `artifact ${animClass}`;
   el.innerHTML = `
     <h2>${artifact.title}</h2>
     <img src="${artifact.image}" alt="${artifact.title}" loading="lazy" />
@@ -128,3 +129,4 @@ document.getElementById("copy-link").addEventListener("click", () => {
 renderArtifact();
 showNarration();
 setInterval(showNarration, 10000);
+
