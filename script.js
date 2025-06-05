@@ -134,6 +134,7 @@ const phrases = [
 
 let deepWebMode = false;
 const animations = ["fade-in", "slide-in-left", "slide-in-right", "zoom-in", "skew-in"];
+let exploreClickCount = 0;
 
 document.getElementById("toggle-mode").addEventListener("click", () => {
   deepWebMode = !deepWebMode;
@@ -147,25 +148,23 @@ function getRandomUnusedArtifact() {
   const index = Math.floor(Math.random() * unusedArtifacts.length);
   const [artifact] = unusedArtifacts.splice(index, 1);
 
-  // Easter egg logic
   const r = Math.random();
   if (r < 0.01) {
     return {
       title: "🧱 404 Room",
-      image: "images/404_Room.webp",
+      image: "images/goth_forum.webp",
       caption: "A broken thread with no replies... just echoes.",
       year: "??"
     };
   } else if (r < 0.015) {
     return {
       title: "🎶 Secret Myspace Page",
-      image: "images/Secret_Myspace_Page.webp",
+      image: "images/webring_hub.webp",
       caption: "Autoplay: Evanescence – Bring Me to Life",
       year: "2004"
     };
   }
 
-  // Rare glitch artifact logic
   if (Math.random() < 0.05) {
     artifact.title = `⚠️ ${artifact.title}`;
     artifact.caption = "▒▒▒ DATA CORRUPTION ▒▒▒";
@@ -183,6 +182,12 @@ function glitchText(text) {
 }
 
 function renderArtifact() {
+  exploreClickCount++;
+  if (exploreClickCount === 13) {
+    launchMiniGame();
+    return;
+  }
+
   const artifact = getRandomUnusedArtifact();
   const container = document.getElementById("artifact-container");
   const el = document.createElement("div");
@@ -209,6 +214,67 @@ document.getElementById("copy-link").addEventListener("click", () => {
   navigator.clipboard.writeText(window.location.href);
   alert("Link copied to clipboard!");
 });
+
+function launchMiniGame() {
+  const gameOverlay = document.createElement("div");
+  gameOverlay.id = "popup-game";
+  gameOverlay.innerHTML = `
+    <style>
+      #popup-game {
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: black; z-index: 9999; color: lime;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        font-family: monospace;
+      }
+      .popup-window {
+        width: 200px; height: 100px;
+        background: #333; color: white;
+        border: 2px solid lime; padding: 10px;
+        position: absolute;
+        cursor: pointer;
+      }
+      #scoreboard { font-size: 1.2rem; margin-top: 1rem; }
+    </style>
+    <h1>🪟 Pop-Up Escape!</h1>
+    <p>Close as many pop-ups as you can in 30 seconds!</p>
+    <div id="scoreboard">Score: 0</div>
+    <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3e4bcf60d6.mp3?filename=click-124467.mp3" preload="auto"></audio>
+  `;
+  document.body.appendChild(gameOverlay);
+
+  const sound = document.getElementById("click-sound");
+  let score = 0;
+  const scoreboard = document.getElementById("scoreboard");
+  const endTime = Date.now() + 30000;
+
+  const spawnPopup = () => {
+    if (Date.now() > endTime) {
+      gameOverlay.innerHTML += `<h2>Time's up! Score: ${score}</h2>`;
+      if (score >= 10) {
+        gameOverlay.innerHTML += `<p>You unlocked: 🎁 Hidden Y2K Archive</p>`;
+        unusedArtifacts.unshift(allArtifacts.find(a => a.title.includes("Hidden Y2K")));
+      }
+      gameOverlay.innerHTML += `<button onclick="location.reload()">Reload Site</button>`;
+      return;
+    }
+    const popup = document.createElement("div");
+    popup.className = "popup-window";
+    popup.textContent = "Close Me!";
+    popup.style.top = `${Math.random() * 80 + 10}%`;
+    popup.style.left = `${Math.random() * 80 + 10}%`;
+    popup.addEventListener("click", () => {
+      popup.remove();
+      score++;
+      sound.currentTime = 0;
+      sound.play();
+      scoreboard.textContent = `Score: ${score}`;
+    });
+    gameOverlay.appendChild(popup);
+    setTimeout(spawnPopup, Math.random() * 700);
+  };
+
+  spawnPopup();
+}
 
 // Initial render
 renderArtifact();
