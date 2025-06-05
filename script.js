@@ -152,14 +152,14 @@ function getRandomUnusedArtifact() {
   if (r < 0.01) {
     return {
       title: "🧱 404 Room",
-      image: "images/goth_forum.webp",
+      image: "images/404_Room.webp",
       caption: "A broken thread with no replies... just echoes.",
       year: "??"
     };
   } else if (r < 0.015) {
     return {
       title: "🎶 Secret Myspace Page",
-      image: "images/webring_hub.webp",
+      image: "images/Secret_Myspace_Page.webp",
       caption: "Autoplay: Evanescence – Bring Me to Life",
       year: "2004"
     };
