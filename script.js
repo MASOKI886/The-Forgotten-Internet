@@ -59,6 +59,67 @@ const allArtifacts = [
     caption: "Her last entry ends mid-sentence...",
     year: "1999"
   }
+  {
+  title: "🖤 Chain Email Confession",
+  image: "images/chain_email.webp",
+  caption: "Forwarded 666 times... never broken.",
+  year: "2000"
+},
+{
+  title: "🧙‍♀️ GeoCities Witch Tips",
+  image: "images/witch_tips.webp",
+  caption: "Last spell posted on a lunar eclipse.",
+  year: "1998"
+},
+{
+  title: "📼 Web Tape Archive",
+  image: "images/web_tape.webp",
+  caption: "Only plays on Netscape 4.7.",
+  year: "1999"
+},
+{
+  title: "🔐 Angelfire Journal Vault",
+  image: "images/journal_vault.webp",
+  caption: "Locked behind broken JavaScript.",
+  year: "2001"
+},
+{
+  title: "🕳️ Guestbook of Regrets",
+  image: "images/guestbook_regrets.webp",
+  caption: "Entries removed, but still felt.",
+  year: "2002"
+},
+{
+  title: "🔮 Tarot Chatroom Logs",
+  image: "images/tarot_chat.webp",
+  caption: "The cards predicted her disappearance.",
+  year: "2003"
+},
+{
+  title: "⛓ Y2K Doom Countdown",
+  image: "images/y2k_countdown.webp",
+  caption: "The world didn’t end. But something changed.",
+  year: "1999"
+},
+{
+  title: "📡 Angel DSL Shrine",
+  image: "images/angel_dsl.webp",
+  caption: "Worshipped the speed of 56kbps.",
+  year: "2000"
+},
+{
+  title: "🌀 Java Applet Trap",
+  image: "images/applet_trap.webp",
+  caption: "You're stuck unless you click the red X.",
+  year: "2002"
+},
+{
+  title: "📁 Deep Zip Directory",
+  image: "images/deep_zip.webp",
+  caption: "No one remembers what it held.",
+  year: "2001"
+}
+
 ];
 
 let unusedArtifacts = [...allArtifacts];
