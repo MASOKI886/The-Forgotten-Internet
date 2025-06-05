@@ -43,19 +43,19 @@ const allArtifacts = [
   },
   {
     title: "🎮 Game Clan HQ",
-    image: "images/webring_hub.webp",
+    image: "images/Game_Clan_HQ.webp",
     caption: "Three members. One match recorded.",
     year: "2001"
   },
   {
     title: "📟 ASCII Shrine",
-    image: "images/goth_forum.webp",
+    image: "images/ASCII_Shrine.webp",
     caption: "All text. All strange. Still hosted.",
     year: "1997"
   },
   {
     title: "🧛‍♀️ The Crimson Blog",
-    image: "images/vampire_shrine.webp",
+    image: "images/The_Crimson_Blog.webp",
     caption: "Her last entry ends mid-sentence...",
     year: "1999"
   }
