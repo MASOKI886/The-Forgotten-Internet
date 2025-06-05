@@ -58,7 +58,7 @@ const allArtifacts = [
     image: "images/The_Crimson_Blog.webp",
     caption: "Her last entry ends mid-sentence...",
     year: "1999"
-  }
+  },
   {
   title: "🖤 Chain Email Confession",
   image: "images/chain_email.webp",
