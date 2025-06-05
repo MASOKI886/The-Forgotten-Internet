@@ -37,7 +37,7 @@ const allArtifacts = [
   },
   {
     title: "🛸 Alien Abduction Logs",
-    image: "images/Alien_Abduction_Logs",
+    image: "images/Alien_Abduction_Logs.webp",
     caption: "Last sighting: 2004. Discredited?",
     year: "2004"
   },
